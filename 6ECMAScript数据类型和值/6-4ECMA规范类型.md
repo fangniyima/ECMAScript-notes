@@ -112,19 +112,19 @@ Set类型用于解释在内存模型中使用的无序元素的集合。 Set类�
 
     说明
 
-1. 令asyncContext为正在执行的上下文
-2. 令promise为? PromiseResolve(%Promise%, value)
-3. 让stepsFulfilled为Await Fulfilled函数中定义的算法步骤。
-4. 让onFulfilled为CreateBuiltinFunction(stepsFulfilled, « [[AsyncContext]] »)
-5. 将onFulfilled.[[AsyncContext]]的值设为asyncContext
-6. 令stepsRejected为Await Rejected函数中定义的算法步骤
-7. 让onRejected为CreateBuiltinFunction(stepsRejected, « [[AsyncContext]] »)
-8. 将onRejected.[[AsyncContext]]设置为asyncContext
-9. 执行! PerformPromiseThen(promise, onFulfilled, onRejected).
-10. 从执行上下文堆栈中删除asyncContext，并将位于执行上下文堆栈顶部的执行上下文恢复为正在运行的执行上下文
-11. 设置asyncContext的代码求值状态，以便在完成完成后继续求值时，将执行调用Await的算法的以下步骤，完成可用。
-12. 返回
-13. 注意：这将返回对先前已恢复asyncContext求值的操作的计算。
+  1. 令asyncContext为正在执行的上下文
+  2. 令promise为? PromiseResolve(%Promise%, value)
+  3. 让stepsFulfilled为Await Fulfilled函数中定义的算法步骤。
+  4. 让onFulfilled为CreateBuiltinFunction(stepsFulfilled, « [[AsyncContext]] »)
+  5. 将onFulfilled.[[AsyncContext]]的值设为asyncContext
+  6. 令stepsRejected为Await Rejected函数中定义的算法步骤
+  7. 让onRejected为CreateBuiltinFunction(stepsRejected, « [[AsyncContext]] »)
+  8. 将onRejected.[[AsyncContext]]设置为asyncContext
+  9. 执行! PerformPromiseThen(promise, onFulfilled, onRejected).
+  10. 从执行上下文堆栈中删除asyncContext，并将位于执行上下文堆栈顶部的执行上下文恢复为正在运行的执行上下文
+  11. 设置asyncContext的代码求值状态，以便在完成完成后继续求值时，将执行调用Await的算法的以下步骤，完成可用。
+  12. 返回
+  13. 注意：这将返回对先前已恢复asyncContext求值的操作的计算。
 
 <table><tr><td bgcolor=#E9FBE9 width=10%>
 NOTE
@@ -157,7 +157,7 @@ Await Fulfilled功能是一个匿名内置函数，用作"等待"规范方法的
 7. Assert: When we reach this step, asyncContext has already been removed from the execution context stack and prevContext is the currently running execution context.
 8. Return undefined.
 
-Await-rejected函数的"length"属性为1𝔽。
+Await-rejected函数的"length"属性为1<sub>𝔽</sub>。
 
 说明:
 

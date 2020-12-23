@@ -225,7 +225,7 @@ Await-rejected函数的"length"属性为1𝔽。
 3. 返回完成{[[[Type]]：completeRecord.[[Type]]，[[Value]]：value，[[Target]]：completionRecord.[[Target]]}。
 
 
-### 6.2.4 The Reference Record Specification Type (引用记录规范类型)
+### 6.2.4 引用记录规范类型 (The Reference Record Specification Type)
 
 引用记录类型用于解释诸如删除，typeof，赋值运算符，super关键字和其他语言功能之类的运算符的行为。 例如，赋值的左操作数应产生引用记录。
 

@@ -1,0 +1,2 @@
+# ECMAScript-
+ECMAScript中文

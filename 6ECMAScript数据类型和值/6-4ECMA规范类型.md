@@ -2,16 +2,16 @@
 
 规范类型对应于算法中用于描述ECMAScript语言构造和ECMAScript语言类型语义的元值。规范类型包括引用(Reference)、列表(List)、完成(Completion)、属性描述符(Property Descriptor)、环境记录(Environment Record)、抽象闭包(Abstract Closure)和数据块(Data Block)。规范类型值是不一定对应于ECMAScript实现中任何特定实体的规范产物。规范类型值可用于描述ECMAScript表达式计算的中间结果，但这些值不能作为对象的属性或ECMAScript语言变量的值存储。
 
-### 6.2.1列表和记录规范类型
+### 6.2.1 列表和记录规范类型
 
-List类型用于解释在新表达式，函数调用以及其他需要简单的值列表的算法中对参数列表(请参见12.3.8)的求值。 List类型的值是包含各个值的list元素的简单排序序列。 这些序列可以是任何长度。 列表的元素可以使用0起点索引随机访问。 为了符号上的方便，可以使用类似数组的语法来访问List元素。 例如，arguments [2]是表示List参数的第3个元素的简写。
-为方便起见，在本规范中，可以使用文字语法来表示新的List值。例如，«1，2»定义具有两个元素的List值，每个元素都被初始化为特定值。一个新的空列表可以表示为«»。
+List类型用于解释在new表达式，函数调用以及其他需要简单的值列表的算法中对参数列表(请参见12.3.8)的求值。 List类型的值是包含各个值的list元素的简单排序序列。 这些序列可以是任何长度。 列表的元素可以使用0起点索引随机访问。 为了符号上的方便，可以使用类似数组的语法来访问List元素。 例如，arguments [2]是表示List参数的第3个元素的简写。
+为方便起见，在本规范中，可以使用字面量语法来表示新的List值。例如，«1，2»定义具有两个元素的List值，每个元素都被初始化为特定值。一个新的空列表可以表示为«»。
 
 记录类型用于描述本规范算法内的数据聚合。记录类型值包含一个或多个命名字段。每个字段的值可以是ECMAScript值，也可以是由与Record类型关联的名称表示的抽象值。字段名称始终用双括号括起来，例如[[Value]]。
 
-为方便起见，在本规范中，可以使用类似于对象常量的语法来表示Record值。例如，{[[Field1]]：42，[[Field2]]：false，[[Field3]]：empty}定义了一个Record值，该值具有三个字段，每个字段都被初始化为特定值。字段名称顺序不重要。没有明确列出的任何字段都被视为不存在。
+为方便起见，在本规范中，可以使用类似于对象字面量的语法来表示Record值。例如，{[[Field1]]：42，[[Field2]]：false，[[Field3]]：empty}定义了一个Record值，该值具有三个字段，每个字段都被初始化为特定值。字段名称顺序不重要。没有明确列出的任何字段都被视为不存在。
 
-在规范文本和算法中，点符号可用于指代Record值的特定字段。例如，如果R是上一段中显示的记录，则R.[[Field2]]是" R的名为[[Field2]]的字段"的简写。
+在规范文本和算法中，点符号可用于指代Record值的特定字段。例如，如果R是上一段中显示的记录，则R.[[Field2]]是"R的名为[[Field2]]的字段"的简写。
 
 可以命名常用记录字段组合的模式，并且该名称可以用作文字记录值的前缀，以标识所描述的特定类型的聚合。例如：PropertyDescriptor {[[Value]]：42，[[Writable]]：false，[[Configurable]]：true}。
 
@@ -19,7 +19,7 @@ List类型用于解释在新表达式，函数调用以及其他需要简单的�
 
 Set类型用于解释在内存模型中使用的无序元素的集合。 Set类型的值是元素的简单集合，其中没有元素出现一次以上。 元素可以添加到集合中或从集合中删除。 集合可以合并，相交或彼此减去。
 
-关系类型用于解释对集合的约束。 关系类型的值是其值域中的有序值对的集合。 例如，事件关联是一组有序的事件对。 对于一个关系R以及R的值域中的两个值a和b，a R b是表示有序对(a，b)是R的成员的简写。 当关系是满足这些条件的最小关系时，它相对于某些条件而言最少。
+Relation类型用于解释对集合的约束。 关系类型的值是其值域中的有序值对的集合。 例如，事件关联是一组有序的事件对。 对于一个关系R以及R的值域中的两个值a和b，a R b是表示有序对(a，b)是R的成员的简写。 当关系是满足这些条件的最小关系时，它相对于某些条件而言最少。
 
 严格的偏序是满足以下条件的关系值R。
 - For all a, b, and c in R's domain:
@@ -48,8 +48,10 @@ Set类型用于解释在内存模型中使用的无序元素的集合。 Set类�
         反对称性：∀a，b∈S，a≤b且b≤a，则a=b；
         传递性：∀a，b，c∈S，a≤b且b≤c，则a≤c；
         则称"≤"是S上的非严格偏序或自反偏序。
-    
+    严格全序关系(strictly totally ordered rela-tion)亦称严格线性序关系、严格有序关系一种重要的全序关系.指集合A上的不对称的、传递的、弱连通的二元关系R. A称为严格全序集.例如，整数集上的小于关系<就是一个严格全序的.
 
+    这部分知识不属于本规范内容，了解更多请查阅相关资料    
+  
 严格全序是满足以下条件的关系值R。
 
 - For all a, b, and c in R's domain:
@@ -59,18 +61,12 @@ Set类型用于解释在内存模型中使用的无序元素的集合。 Set类�
   - If a R b and b R c, then a R c.
 
 <table><tr><td bgcolor=#E9FBE9 width=10%>
-附注2
+NOTE2
 
 上面的三个属性分别称为总体性、不可逆性和及物性。
 </td></tr></table>
 
-    拓展：
-        
-    严格全序关系(strictly totally ordered rela-tion)亦称严格线性序关系、严格有序关系一种重要的全序关系.指集合A上的不对称的、传递的、弱连通的二元关系R. A称为严格全序集.例如，整数集上的小于关系<就是一个严格全序的.
-
-    这部分知识不属于本规范内容，了解更多请查阅相关资料
-
-### 6.2.3The Completion Record Specification Type(完成记录规范类型)
+### 6.2.3 完成记录规范类型(The Completion Record Specification Type)
 
 完成类型是一种记录，用于解释值和控制流的运行时传播，例如执行非本地控制转移的语句(break, continue, return and throw)的行为。
 
@@ -111,13 +107,14 @@ Set类型用于解释在内存模型中使用的无序元素的集合。 Set类�
 其中，除完成之外，上述步骤中的所有别名都是短暂的，仅在与Await相关的步骤中可见。
 
     说明
+    
     1. 令asyncContext为正在执行的上下文
     2. 令promise为? PromiseResolve(%Promise%, value)
-    3. 让stepsFulfilled为Await Fulfilled函数中定义的算法步骤。
-    4. 让onFulfilled为CreateBuiltinFunction(stepsFulfilled, « [[AsyncContext]] »)
+    3. 令stepsFulfilled为Await Fulfilled函数中定义的算法步骤。
+    4. 令onFulfilled为CreateBuiltinFunction(stepsFulfilled, « [[AsyncContext]] »)
     5. 将onFulfilled.[[AsyncContext]]的值设为asyncContext
     6. 令stepsRejected为Await Rejected函数中定义的算法步骤
-    7. 让onRejected为CreateBuiltinFunction(stepsRejected, « [[AsyncContext]] »)
+    7. 令onRejected为CreateBuiltinFunction(stepsRejected, « [[AsyncContext]] »)
     8. 将onRejected.[[AsyncContext]]设置为asyncContext
     9. 执行! PerformPromiseThen(promise, onFulfilled, onRejected).
     10. 从执行上下文堆栈中删除asyncContext，并将位于执行上下文堆栈顶部的执行上下文恢复为正在运行的执行上下文
@@ -139,11 +136,11 @@ Let result be Await(value).
 ReturnIfAbrupt(result).
 </td></tr></table>
 
-await fulfilled函数的"length"属性为1𝔽。
+await fulfilled函数的"length"属性为1<sub>𝔽</sub>。
 
 ##### 6.2.3.1.1 Await Fulfilled Functions
 
-Await Fulfilled功能是一个匿名内置函数，用作"等待"规范方法的一部分，以将"承诺完成"值作为正常完成传递给调用方。 每个Await fulfilled函数都有一个[[AsyncContext]]内部插槽。
+Await Fulfilled函数是一个匿名内置函数，用作"Await"规范方法的一部分，以将"承诺完成"值作为正常完成传递给调用方。 每个Await fulfilled函数都有一个[[AsyncContext]]内部插槽。
 
 当使用参数value调用Await fulfilled函数时，将执行以下步骤：
 
@@ -171,7 +168,7 @@ Await-rejected函数的"length"属性为1<sub>𝔽</sub>。
 
 ##### 6.2.3.1.2 Await Rejected Functions
 
-Await rejected函数是一个匿名的内置函数，用作Await规范方法的一部分，用于将promise拒绝原因作为一个突然抛出完成传递给调用方。每个wait-rejected函数都有一个[[AsyncContext]]内部槽。
+Await rejected函数是一个匿名的内置函数，用作Await规范方法的一部分，用于将promise拒绝原因作为一个突然抛出完成传递给调用方。每个await rejected函数都有一个[[AsyncContext]]内部槽。
 
 
 
@@ -187,7 +184,7 @@ Await rejected函数是一个匿名的内置函数，用作Await规范方法的�
     Return undefined.
 
 
-Await-rejected函数的"length"属性为1𝔽。
+Await-rejected函数的"length"属性为1<sub>𝔽</sub>。
 
 #### 6.2.3.2 NormalCompletion
 例如一个带有一个抽象参数的完成：
@@ -218,6 +215,8 @@ Await-rejected函数的"length"属性为1𝔽。
 
 3. Return Completion { [[Type]]: completionRecord.[[Type]], [[Value]]: value, [[Target]]: completionRecord.[[Target]] }.
 
+说明：
+
 1. 断言：如果completeRecord.[[[Type]]是return或throw，则completeRecord.[[Value]]不为空。
 
 2. 如果completionRecord.[[Value]]不为空，则返回Completion(completionRecord)。
@@ -237,7 +236,7 @@ Await-rejected函数的"length"属性为1𝔽。
 | [[Base]]	|其中之一：任何ECMAScript语言值，但undefined或null、环境记录或无法解析的值除外。| 包含绑定的值或环境记录。 [[Base]]不可解析表示无法解析绑定。|
 |[[ReferencedName]]	|String or Symbol	|绑定的名称。 如果[[Base]]值是环境记录，则始终为字符串。|
 |[[Strict]]	|Boolean |	如果引用记录源自严格模式代码，则为true，否则为false。|
-|[[ThisValue]]|	any ECMAScript language value or empty|如果不为空，则引用记录表示使用super关键字表示的属性绑定。 它称为超级引用记录，并且其[[Base]]值永远不会是环境记录。 在这种情况下，[[ThisValue]]字段将在创建引用记录时保留此值。|
+|[[ThisValue]]|	any ECMAScript language value or empty|如果不为空，则引用记录表示使用super关键字表示的属性绑定。 它称为super引用记录，并且其[[Base]]值永远不会是环境记录。 在这种情况下，[[ThisValue]]字段将在创建引用记录时保留此值。|
 
 本规范中使用以下抽象操作对引用进行操作：
 
@@ -359,13 +358,13 @@ Await-rejected函数的"length"属性为1𝔽。
 #### 6.2.4.7 InitializeReferencedBinding(V，W)
 抽象操作InitializeReferencedBinding使用参数V和W。调用时，它将执行以下步骤：
 
-  ReturnIfAbrupt(V).
-  ReturnIfAbrupt(W).
-  Assert: V is a Reference Record.
-  Assert: IsUnresolvableReference(V) is false.
-  Let base be V.[[Base]].
-  Assert: base is an Environment Record.
-  Return base.InitializeBinding(V.[[ReferencedName]], W).
+    ReturnIfAbrupt(V).
+    ReturnIfAbrupt(W).
+    Assert: V is a Reference Record.
+    Assert: IsUnresolvableReference(V) is false.
+    Let base be V.[[Base]].
+    Assert: base is an Environment Record.
+    Return base.InitializeBinding(V.[[ReferencedName]], W).
 
 ### 6.2.5属性描述符规范类型
 
